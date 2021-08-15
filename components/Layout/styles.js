@@ -10,6 +10,7 @@ export default css.global`
 
   html {
     font-size: 62.5%;
+    font-family: 'Padauk', sans-serif;
   }
 
   body {
@@ -23,6 +24,7 @@ export default css.global`
     width: 100vw;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
