@@ -9,6 +9,12 @@ export default css`
     overflow-y: auto;
   }
 
+  li {
+    height: 30px;
+    display: flex;
+    align-items: center;
+  }
+
   p {
     color: ${colors.primary};
     font-size: 1.4rem;

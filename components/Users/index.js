@@ -1,14 +1,12 @@
 import Link from 'next/link'
 import styles from './styles'
 
-const Users = ({ name, key, id }) => {
+const Users = ({ name, id }) => {
   return (
     <>
-      <li>
         <Link href={`/chat/${id}`}>
           <a>{name}</a>
         </Link>
-      </li>
       <style jsx>{styles}</style>
     </>
   )
