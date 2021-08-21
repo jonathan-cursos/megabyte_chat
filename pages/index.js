@@ -10,14 +10,11 @@ export default function Home() {
         <title>Megabyte Chat - Menu</title>
       </Head>
       <Layout>
-        <header>
-          <h1>MEGABYTE CHAT</h1>
-        </header>
         <div>
           <Link href='/user/create'>
             <a>Crear usuario</a>
           </Link>
-          <Link href='/chat'>
+          <Link href='/user'>
             <a>Ingresar a chat</a>
           </Link>
         </div>
@@ -27,17 +24,6 @@ export default function Home() {
             width: 100%;
             max-width: 500px;
             height: 300px;
-          }
-
-          header {
-            color: ${colors.primary};
-            padding-bottom: 20px;
-          }
-
-          h1 {
-            font-size: 2.5rem;
-            letter-spacing: 1rem;
-            text-align: center;
           }
 
           a {
