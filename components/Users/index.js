@@ -5,7 +5,7 @@ const Users = ({ name, key, id }) => {
   return (
     <>
       <li>
-        <Link href={`/user/${id}`}>
+        <Link href={`/chat/${id}`}>
           <a>{name}</a>
         </Link>
       </li>

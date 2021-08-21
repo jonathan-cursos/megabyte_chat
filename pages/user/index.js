@@ -13,7 +13,7 @@ const User = ({ users }) => {
         <p>Escoge el usuario con el que quieres ingresar</p>
         <ul>
           {users.map((user) => {
-            return <Users name={user.name} key={user.id} id={user.id} />
+            return <Users name={user.name} key={user.id} id={user._id} />
           })}
         </ul>
       </Layout>
