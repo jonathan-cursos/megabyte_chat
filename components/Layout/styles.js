@@ -4,7 +4,7 @@ import { colors } from '../../styles/theme'
 export const styles = css`
   header {
     color: ${colors.primary};
-    padding-bottom: 20px;
+    padding-bottom: 10px;
   }
 
   h1 {

@@ -10,9 +10,10 @@ const User = ({ users }) => {
         <Head>
           <title>Megabyte Chat - Users</title>
         </Head>
+        <p>Escoge el usuario con el que quieres ingresar</p>
         <ul>
           {users.map((user) => {
-            return <Users name={user.name} key={user.id} />
+            return <Users name={user.name} key={user.id} id={user.id} />
           })}
         </ul>
       </Layout>
