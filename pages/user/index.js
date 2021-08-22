@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Layout from '../../components/Layout'
 import Users from '../../components/Users'
-import styles from './styles'
 
 const User = ({ users }) => {
   return (
