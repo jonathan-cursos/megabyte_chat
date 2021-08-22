@@ -17,18 +17,18 @@ export default function Home() {
           <button
             type='button'
             onClick={() => {
-              router.push('/user/create')
-            }}
-          >
-            Crear usuario
-          </button>
-          <button
-            type='button'
-            onClick={() => {
               router.push('/user')
             }}
           >
             Ingresar
+          </button>
+          <button
+            type='button'
+            onClick={() => {
+              router.push('/user/create')
+            }}
+          >
+            Crear usuario
           </button>
         </div>
         <style jsx>{`
