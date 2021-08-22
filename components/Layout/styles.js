@@ -8,9 +8,23 @@ export const styles = css`
   }
 
   h1 {
-    font-size: 2.5rem;
+    font-size: 3.5rem;
     letter-spacing: 1rem;
+    font-weight: 600;
     text-align: center;
+  }
+  div {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    padding: 60px 10px 10px;
+  }
+
+  @media (min-width: 500px) {
+    div {
+      height: 700px;
+      width: 500px;
+    }
   }
 `
 
@@ -23,30 +37,21 @@ export default css.global`
 
   html {
     font-size: 62.5%;
-    font-family: 'Padauk', sans-serif;
+    font-family: 'Hind Siliguri', sans-serif;
   }
 
   body {
-    background-color: ${colors.bg};
-  }
-
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: #f9f9f9;
   }
 
   main {
     width: 100vw;
-    height: 200px;
-    max-width: 700px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 20px 0;
-    background: ${colors.secondary};
+    background-color: green;
   }
 
   ul,

@@ -23,7 +23,9 @@ export default function Home() {
             padding: 10px;
             width: 100%;
             max-width: 500px;
-            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
 
           a {
