@@ -1,26 +1,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 import Layout from '../../../components/Layout'
 import styles from './styles'
 
 const Chat = ({ chats, userId }) => {
-  const [users, setUsers] = useState([])
-
-  useEffect(() => {
-    const chatsUsers = chats.map((chat) => {
-      const chatReceptor = chat.users.filter((user) => {
-        let userItem = {} // Para que el lint no diera problemas al no retornar nada del filter
-        if (user._id !== userId) {
-          userItem = user
-        }
-        return userItem
-      })
-      return chatReceptor[0]
-    })
-    setUsers(chatsUsers)
-  }, [])
-
   return (
     <>
       <Head>
@@ -28,17 +11,22 @@ const Chat = ({ chats, userId }) => {
       </Head>
       <Layout>
         <ul>
-          {users.length > 0 ? (
-            users.map((user) => (
-              <li key={user._id}>
-                <Link href='/'>
-                  <a>{user.name}</a>
+          {chats.map((chat) => {
+            let userItem = {}
+            chat.users.filter((user) => {
+              if (user._id !== userId) {
+                userItem = user
+              }
+              return userItem
+            })
+            return (
+              <li key={chat._id}>
+                <Link href={`/messages/${chat._id}`}>
+                  <a>{userItem.name}</a>
                 </Link>
               </li>
-            ))
-          ) : (
-            <p>No se encontraron chats. Crea uno nuevo</p>
-          )}
+            )
+          })}
         </ul>
       </Layout>
       <style jsx>{styles}</style>
