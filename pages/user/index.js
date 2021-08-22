@@ -22,22 +22,24 @@ const User = ({ users }) => {
         </ul>
       </Layout>
       <style jsx>{`
+        p {
+          color: ${colors.primary};
+          font-size: 2rem;
+          text-align: center;
+        }
+
         ul {
           width: 100%;
-          max-width: 300px;
-          height: 130px;
+          height: 450px;
+          padding: 20px;
+          margin-top: 20px;
+          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
           overflow-y: auto;
+          border-radius: 20px;
         }
 
         li {
-          height: 30px;
-          display: flex;
-          align-items: center;
-        }
-
-        p {
-          color: ${colors.primary};
-          font-size: 1.4rem;
+          height: 40px;
         }
       `}</style>
     </>

@@ -17,7 +17,7 @@ export const styles = css`
     background-color: white;
     height: 100%;
     width: 100%;
-    padding: 60px 10px 10px;
+    padding: 60px 25px 10px;
   }
 
   @media (min-width: 500px) {
