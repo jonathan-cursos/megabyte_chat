@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Layout from '../../components/Layout'
 import Users from '../../components/Users'
+import { colors } from '../../styles/theme'
 
 const User = ({ users }) => {
   return (
