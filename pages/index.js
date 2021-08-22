@@ -2,8 +2,11 @@ import Link from 'next/link'
 import Layout from '../components/Layout'
 import { colors } from '../styles/theme'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 
 export default function Home() {
+  const router = useRouter()
+
   return (
     <>
       <Head>
@@ -11,30 +14,41 @@ export default function Home() {
       </Head>
       <Layout>
         <div>
-          <Link href='/user/create'>
-            <a>Crear usuario</a>
-          </Link>
-          <Link href='/user'>
-            <a>Ingresar a chat</a>
-          </Link>
+          <button
+            type='button'
+            onClick={() => {
+              router.push('/user/create')
+            }}
+          >
+            Crear usuario
+          </button>
+          <button
+            type='button'
+            onClick={() => {
+              router.push('/user')
+            }}
+          >
+            Ingresar a chat
+          </button>
         </div>
         <style jsx>{`
-          div {
-            padding: 10px;
-            width: 100%;
-            max-width: 500px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+          button {
+            display: block;
+            margin: 20px auto;
+            width: 200px;
+            height: 55px;
+            border: none;
+            border-radius: 250px;
+            font-size: 2rem;
+            color: ${colors.white};
+            text-decoration: none;
+            text-align: center;
+            background-color: ${colors.secondary};
+            transition: 0.4s;
           }
 
-          a {
-            color: ${colors.primary};
-            text-decoration: none;
-            display: block;
-            font-size: 2rem;
-            margin: 0 auto 10px;
-            max-width: 150px;
+          button:hover {
+            opacity: 0.5;
           }
         `}</style>
       </Layout>

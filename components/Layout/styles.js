@@ -25,6 +25,10 @@ export const styles = css`
       height: 700px;
       width: 500px;
     }
+
+    main {
+      background-color: ${colors.secondary};
+    }
   }
 `
 
@@ -51,7 +55,6 @@ export default css.global`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: green;
   }
 
   ul,
