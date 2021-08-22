@@ -28,7 +28,7 @@ export default function Home() {
               router.push('/user')
             }}
           >
-            Ingresar a chat
+            Ingresar
           </button>
         </div>
         <style jsx>{`
