@@ -4,9 +4,9 @@ import styles from './styles'
 const Users = ({ name, id }) => {
   return (
     <>
-        <Link href={`/chat/${id}`}>
-          <a>{name}</a>
-        </Link>
+      <Link href={`/user/${id}`}>
+        <a>{name}</a>
+      </Link>
       <style jsx>{styles}</style>
     </>
   )
