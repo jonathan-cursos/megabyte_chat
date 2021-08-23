@@ -53,7 +53,7 @@ export default css`
 
   @media (min-width: 500px) {
     div {
-      height: 700px;
+      height: 90%;
       width: 500px;
     }
 

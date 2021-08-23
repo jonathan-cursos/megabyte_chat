@@ -4,8 +4,9 @@ import Layout from '../../../../components/Layout'
 import Messages from '../../../../components/Messages'
 
 const ChatMessages = () => {
-  const [ids, setIds] = useState('')
+  const [ids, setIds] = useState({})
   useEffect(() => {
+    console.log(router.query)
     // Sí no almacenamos el id en una variable, no podemos pasarlo por props
     setIds({
       userId: router.query.userId,

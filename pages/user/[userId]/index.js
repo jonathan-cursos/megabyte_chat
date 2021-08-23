@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Chats from '../../../components/Chats'
 import Layout from '../../../components/Layout'
-import { colors } from '../../../styles/theme'
+import { colors, boxShadow } from '../../../styles/theme'
 
 const Chat = ({ chats, userId }) => {
   return (
@@ -40,9 +40,12 @@ const Chat = ({ chats, userId }) => {
 
         ul {
           width: 100%;
-          max-width: 300px;
-          height: 130px;
+          height: 450px;
+          padding: 20px;
+          margin-top: 20px;
+          box-shadow: ${boxShadow};
           overflow-y: auto;
+          border-radius: 20px;
         }
       `}</style>
     </>

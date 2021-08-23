@@ -4,4 +4,4 @@ export const colors = {
   white: '#fff'
 }
 
-export const fonts = {}
+export const boxShadow = 'rgba(149, 157, 165, 0.2) 0px 8px 24px'

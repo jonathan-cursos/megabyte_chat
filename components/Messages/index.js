@@ -3,9 +3,11 @@ import styles from './styles'
 
 const Messages = ({ ids }) => {
   const [messages, setMessages] = useState([])
+
   useEffect(() => {
-    if (ids) {
-      fetch(`http://localhost:3001/message/${ids.chatId}`)
+    console.log(ids)
+    if (ids[0] !== undefined) {
+      fetch(`http://localhost:3001/message/${ids[1]}`)
         .then((res) => res.json())
         .then(({ body: chatMessages }) => {
           setMessages(chatMessages)
@@ -15,13 +17,12 @@ const Messages = ({ ids }) => {
 
   return (
     <>
-      {console.log(messages)}
       <div>
         {messages.map((message) => {
           return (
             <article
               key={message._id}
-              received={message.user === ids.userId ? 1 : 0}
+              received={message.user === ids[0] ? 1 : 0}
             >
               <p>{message.content}</p>
               <span>{message.date}</span>

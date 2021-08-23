@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Layout from '../../components/Layout'
 import Users from '../../components/Users'
-import { colors } from '../../styles/theme'
+import { colors, boxShadow } from '../../styles/theme'
 
 const User = ({ users }) => {
   return (
@@ -33,7 +33,7 @@ const User = ({ users }) => {
           height: 450px;
           padding: 20px;
           margin-top: 20px;
-          box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+          box-shadow: ${boxShadow};
           overflow-y: auto;
           border-radius: 20px;
         }
