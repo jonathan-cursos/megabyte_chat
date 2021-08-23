@@ -1,38 +1,7 @@
 import css from 'styled-jsx/css'
 import { colors } from '../../styles/theme'
 
-export const styles = css`
-  header {
-    color: ${colors.primary};
-    padding-bottom: 10px;
-  }
-
-  h1 {
-    font-size: 3.5rem;
-    letter-spacing: 1rem;
-    font-weight: 600;
-    text-align: center;
-  }
-  div {
-    background-color: white;
-    height: 100%;
-    width: 100%;
-    padding: 60px 25px 10px;
-  }
-
-  @media (min-width: 500px) {
-    div {
-      height: 700px;
-      width: 500px;
-    }
-
-    main {
-      background-color: ${colors.secondary};
-    }
-  }
-`
-
-export default css.global`
+export const globals = css.global`
   * {
     margin: 0;
     padding: 0;
@@ -60,5 +29,36 @@ export default css.global`
   ul,
   ol {
     list-style: none;
+  }
+`
+
+export default css`
+  header {
+    color: ${colors.primary};
+    padding-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 3.5rem;
+    letter-spacing: 1rem;
+    font-weight: 600;
+    text-align: center;
+  }
+  div {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    padding: 60px 25px 10px;
+  }
+
+  @media (min-width: 500px) {
+    div {
+      height: 700px;
+      width: 500px;
+    }
+
+    main {
+      background-color: ${colors.secondary};
+    }
   }
 `

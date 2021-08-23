@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import globals, { styles } from './styles'
+import styles, { globals } from './styles'
 
 const Layout = ({ children }) => {
   return (
