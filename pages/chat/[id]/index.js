@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Chats from '../../../components/Chats'
 import Layout from '../../../components/Layout'
+import { colors } from '../../../styles/theme'
 
 const Chat = ({ chats, userId }) => {
   return (
@@ -9,6 +11,7 @@ const Chat = ({ chats, userId }) => {
         <title>Megabyte Chat - Chats</title>
       </Head>
       <Layout>
+        <p>Escoge el chat al que deseas ingresar</p>
         <ul>
           {chats.map((chat) => {
             let userItem = {}
@@ -20,9 +23,7 @@ const Chat = ({ chats, userId }) => {
             })
             return (
               <li key={chat._id}>
-                <Link href={`/messages/${chat._id}`}>
-                  <a>{userItem.name}</a>
-                </Link>
+                <Chats chatId={chat._id} userName={userItem.name} />
               </li>
             )
           })}
@@ -30,7 +31,7 @@ const Chat = ({ chats, userId }) => {
       </Layout>
       <style jsx>{`
         p {
-          color: white;
+          color: ${colors.primary};
           font-size: 1.6rem;
         }
 
@@ -39,11 +40,6 @@ const Chat = ({ chats, userId }) => {
           max-width: 300px;
           height: 130px;
           overflow-y: auto;
-        }
-
-        a {
-          color: white;
-          font-size: 1.6rem;
         }
       `}</style>
     </>

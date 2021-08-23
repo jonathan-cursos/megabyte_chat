@@ -1,26 +1,15 @@
+import router from 'next/router'
 import Layout from '../../../components/Layout'
+import Messages from '../../../components/Messages'
 
-const ChatMessages = ({ messages }) => {
+const ChatMessages = () => {
   return (
     <>
       <Layout>
-        {messages.map((message) => (
-          <article key={message._id}>
-            <p>{message.content}</p>
-            <p>{message.date}</p>
-          </article>
-        ))}
+        <Messages chatId={router.query.id} />
       </Layout>
     </>
   )
-}
-
-ChatMessages.getInitialProps = (ctx) => {
-  return fetch(`http://localhost:3001/message/${ctx.query.id}`)
-    .then((res) => res.json())
-    .then(({ body: messages }) => {
-      return { messages }
-    })
 }
 
 export default ChatMessages
