@@ -1,15 +1,40 @@
 import styles from './styles'
 import { MdSend } from 'react-icons/md'
+import { useState } from 'react'
 
-const FormMessage = () => {
+const FormMessage = ({ userId, chatId }) => {
+  const [messageField, setMessageField] = useState('')
+
+  const handleChange = (event) => {
+    setMessageField(event.target.value)
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    await fetch('http://localhost:3001/message/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        user: userId,
+        content: messageField,
+        chat: chatId
+      })
+    })
+    setMessageField('')
+  }
+
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type='text'
           name='message'
           id='message'
-          placeholder='Escribe tu mensaje'
+          placeholder='Ingresa un mensaje'
+          value={messageField}
+          onChange={handleChange}
           required
         />
         <button type='submit'>

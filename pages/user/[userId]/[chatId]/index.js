@@ -19,7 +19,7 @@ const ChatMessages = () => {
     <>
       <Layout>
         <Messages userId={userId} chatId={chatId} />
-        <FormMessage />
+        <FormMessage userId={userId} chatId={chatId} />
       </Layout>
     </>
   )
