@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Layout from '../../../../components/Layout'
 import Messages from '../../../../components/Messages'
+import FormMessage from '../../../../components/FormMessage'
 
 const ChatMessages = () => {
   const [userId, setUserId] = useState('')
@@ -18,6 +19,7 @@ const ChatMessages = () => {
     <>
       <Layout>
         <Messages userId={userId} chatId={chatId} />
+        <FormMessage />
       </Layout>
     </>
   )

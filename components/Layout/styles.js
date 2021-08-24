@@ -1,5 +1,5 @@
 import css from 'styled-jsx/css'
-import { colors } from '../../styles/theme'
+import { colors, fontFamily } from '../../styles/theme'
 
 export const globals = css.global`
   * {
@@ -10,7 +10,7 @@ export const globals = css.global`
 
   html {
     font-size: 62.5%;
-    font-family: 'Hind Siliguri', sans-serif;
+    font-family: ${fontFamily};
   }
 
   body {
