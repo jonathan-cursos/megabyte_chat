@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react'
 import styles from './styles'
 
-const Messages = ({ ids }) => {
+const Messages = ({ userId, chatId }) => {
   const [messages, setMessages] = useState([])
 
   useEffect(() => {
-    console.log(ids)
-    if (ids[0] !== undefined) {
-      fetch(`http://localhost:3001/message/${ids[1]}`)
+    if (chatId || userId) {
+      fetch(`http://localhost:3001/message/${chatId}`)
         .then((res) => res.json())
         .then(({ body: chatMessages }) => {
           setMessages(chatMessages)
         })
     }
-  }, [ids])
+  }, [chatId, userId])
 
   return (
     <>
@@ -22,7 +21,7 @@ const Messages = ({ ids }) => {
           return (
             <article
               key={message._id}
-              received={message.user === ids[0] ? 1 : 0}
+              received={message.user === userId ? 1 : 0}
             >
               <p>{message.content}</p>
               <span>{message.date}</span>
