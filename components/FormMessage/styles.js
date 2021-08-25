@@ -2,16 +2,21 @@ import css from 'styled-jsx/css'
 import { colors, boxShadow, fontFamily } from '../../styles/theme'
 
 export default css`
-  form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 20px;
-    position: relative;
-    margin-top: 10px;
-    width: 100%;
+  div {
     height: 45px;
+    position: absolute;
+    bottom: 10px;
+    width: calc(100% - 50px);
+  }
+  form {
+    /* display: flex;
+    justify-content: space-between;
+    align-items: center; */
+    border-radius: 20px;
     box-shadow: ${boxShadow};
+    position: relative;
+    width: 100%;
+    height: 100%;
   }
 
   input {

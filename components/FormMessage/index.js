@@ -26,7 +26,7 @@ const FormMessage = ({ userId, chatId }) => {
   }
 
   return (
-    <>
+    <div>
       <form onSubmit={handleSubmit}>
         <input
           type='text'
@@ -42,7 +42,7 @@ const FormMessage = ({ userId, chatId }) => {
         </button>
       </form>
       <style jsx>{styles}</style>
-    </>
+    </div>
   )
 }
 

@@ -47,14 +47,17 @@ export default css`
   div {
     background-color: white;
     height: 100%;
+    /* max-height: 300px; */
     width: 100%;
     padding: 60px 25px 10px;
   }
 
   @media (min-width: 500px) {
     div {
-      height: 90%;
+      height: 100%;
+      max-height: 800px;
       width: 500px;
+      position: relative;
     }
 
     main {
