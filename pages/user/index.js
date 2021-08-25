@@ -47,7 +47,7 @@ const User = ({ users }) => {
 }
 
 User.getInitialProps = () => {
-  return fetch('http://localhost:3001/user')
+  return fetch('https://megabyte-chat-be.herokuapp.com/user')
     .then((res) => res.json())
     .then(({ body }) => {
       return { users: body }

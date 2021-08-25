@@ -54,7 +54,7 @@ const Chat = ({ chats, userId }) => {
 
 Chat.getInitialProps = (ctx) => {
   const userId = ctx.query.userId
-  return fetch(`http://localhost:3001/chat/${userId}`)
+  return fetch(`https://megabyte-chat-be.herokuapp.com/chat/${userId}`)
     .then((res) => res.json())
     .then(({ body: chats }) => {
       return { chats, userId }

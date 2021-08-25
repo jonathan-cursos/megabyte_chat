@@ -11,7 +11,7 @@ const FormMessage = ({ userId, chatId }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await fetch('http://localhost:3001/message/', {
+    await fetch('https://megabyte-chat-be.herokuapp.com/message/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

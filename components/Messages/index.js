@@ -6,7 +6,7 @@ const Messages = ({ userId, chatId }) => {
 
   useEffect(() => {
     if (chatId || userId) {
-      fetch(`http://localhost:3001/message/${chatId}`)
+      fetch(`https://megabyte-chat-be.herokuapp.com/message/${chatId}`)
         .then((res) => res.json())
         .then(({ body: chatMessages }) => {
           setMessages(chatMessages)
