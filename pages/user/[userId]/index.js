@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import Chats from '../../../components/Chats'
 import Layout from '../../../components/Layout'
 import { colors, boxShadow } from '../../../styles/theme'
@@ -31,6 +32,9 @@ const Chat = ({ chats, userId }) => {
             )
           })}
         </ul>
+        <Link href={`/user/${userId}/createChat`}>
+          <a>Crear un nuevo chat</a>
+        </Link>
       </Layout>
       <style jsx>{`
         p {
@@ -46,6 +50,14 @@ const Chat = ({ chats, userId }) => {
           box-shadow: ${boxShadow};
           overflow-y: auto;
           border-radius: 20px;
+        }
+
+        a {
+          font-size: 1.6rem;
+          color: ${colors.secondary};
+          margin-top: 5px;
+          display: block;
+          text-decoration: none;
         }
       `}</style>
     </>

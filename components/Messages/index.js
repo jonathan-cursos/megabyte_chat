@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react'
 import styles from './styles'
+import { API } from '../../config'
 
 const Messages = ({ userId, chatId }) => {
   const [messages, setMessages] = useState([])
 
   useEffect(() => {
     if (chatId || userId) {
-      fetch(`https://megabyte-chat-be.herokuapp.com/message/${chatId}`)
+      fetch(`${API}/message/${chatId}`)
         .then((res) => res.json())
         .then(({ body: chatMessages }) => {
           setMessages(chatMessages)

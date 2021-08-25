@@ -30,6 +30,18 @@ export const globals = css.global`
   ol {
     list-style: none;
   }
+
+  input {
+    outline: none;
+    font-family: ${fontFamily};
+  }
+
+  button {
+    background-color: ${colors.secondary};
+    color: white;
+    border: none;
+    font-family: ${fontFamily};
+  }
 `
 
 export default css`
