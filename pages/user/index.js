@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Layout from '../../components/Layout'
 import Users from '../../components/Users'
 import { colors, boxShadow } from '../../styles/theme'
+import { LOCAL_SRV } from '../../config'
 
 const User = ({ users }) => {
   return (
@@ -47,7 +48,7 @@ const User = ({ users }) => {
 }
 
 User.getInitialProps = () => {
-  return fetch('https://megabyte-chat-be.herokuapp.com/user')
+  return fetch(`${LOCAL_SRV}/user`)
     .then((res) => res.json())
     .then(({ body }) => {
       return { users: body }

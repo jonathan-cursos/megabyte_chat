@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import styles from './styles'
-import { API } from '../../config'
+import { API, LOCAL_SRV } from '../../config'
 
 const Messages = ({ userId, chatId }) => {
   const [messages, setMessages] = useState([])
 
   useEffect(() => {
     if (chatId || userId) {
-      fetch(`${API}/message/${chatId}`)
+      fetch(`${LOCAL_SRV}/message/${chatId}`)
         .then((res) => res.json())
         .then(({ body: chatMessages }) => {
           setMessages(chatMessages)

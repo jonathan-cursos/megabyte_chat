@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import Layout from '../../../components/Layout'
 import useField from '../../../hooks/useField'
-import { API } from '../../../config'
+import { LOCAL_SRV } from '../../../config'
 
 const CreateUser = () => {
   const router = useRouter()
@@ -19,7 +19,7 @@ const CreateUser = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await fetch(`${API}/user`, {
+    await fetch(`${LOCAL_SRV}/user`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

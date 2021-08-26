@@ -1,8 +1,7 @@
-import Link from 'next/link'
 import Layout from '../components/Layout'
-import { colors } from '../styles/theme'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
+import { colors } from '../styles/theme'
 
 export default function Home() {
   const router = useRouter()

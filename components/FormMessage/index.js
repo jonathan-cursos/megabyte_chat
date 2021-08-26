@@ -1,6 +1,7 @@
-import styles from './styles'
-import { MdSend } from 'react-icons/md'
 import { useState } from 'react'
+import { MdSend } from 'react-icons/md'
+import styles from './styles'
+import { LOCAL_SRV } from '../../config'
 
 const FormMessage = ({ userId, chatId }) => {
   const [messageField, setMessageField] = useState('')
@@ -11,7 +12,7 @@ const FormMessage = ({ userId, chatId }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await fetch('https://megabyte-chat-be.herokuapp.com/message/', {
+    await fetch(`${LOCAL_SRV}/message/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
