@@ -1,29 +1,40 @@
 import { useState } from 'react'
 import { MdSend } from 'react-icons/md'
 import styles from './styles'
-import { LOCAL_SRV } from '../../config'
+import { LOCAL_SRV, WS_SRV } from '../../config'
+import socketIOClient from 'socket.io-client'
 
 const FormMessage = ({ userId, chatId }) => {
   const [messageField, setMessageField] = useState('')
+  const [socket, setSocket] = useState(socketIOClient(WS_SRV))
 
   const handleChange = (event) => {
     setMessageField(event.target.value)
   }
 
-  const handleSubmit = async (event) => {
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault()
+  //   await fetch(`${LOCAL_SRV}/message/`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify({
+  //       user: userId,
+  //       content: messageField,
+  //       chat: chatId
+  //     })
+  //   })
+  //   setMessageField('')
+  // }
+
+  const handleSubmit = (event) => {
     event.preventDefault()
-    await fetch(`${LOCAL_SRV}/message/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        user: userId,
-        content: messageField,
-        chat: chatId
-      })
+    socket.emit('sendMessage', {
+      user: userId,
+      content: messageField,
+      chat: chatId
     })
-    setMessageField('')
   }
 
   return (
