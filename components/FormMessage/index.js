@@ -4,7 +4,7 @@ import styles from './styles'
 import { LOCAL_SRV, WS_SRV } from '../../config'
 import socketIOClient from 'socket.io-client'
 
-const FormMessage = ({ userId, chatId }) => {
+const FormMessage = ({ handleSubmit }) => {
   const [messageField, setMessageField] = useState('')
   const [socket, setSocket] = useState(socketIOClient(WS_SRV))
 
@@ -28,18 +28,14 @@ const FormMessage = ({ userId, chatId }) => {
   //   setMessageField('')
   // }
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-    socket.emit('sendMessage', {
-      user: userId,
-      content: messageField,
-      chat: chatId
-    })
-  }
-
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault()
+          handleSubmit(messageField)
+        }}
+      >
         <input
           type='text'
           name='message'

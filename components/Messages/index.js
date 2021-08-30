@@ -3,9 +3,9 @@ import socketIOClient from 'socket.io-client'
 import styles from './styles'
 import { API, LOCAL_SRV, WS_SRV } from '../../config'
 
-const Messages = ({ userId, chatId }) => {
-  const [messages, setMessages] = useState([])
-  const [socket, setSocket] = useState(socketIOClient(WS_SRV))
+const Messages = ({ content, date, id, received }) => {
+  // const [messages, setMessages] = useState([])
+  // const [socket, setSocket] = useState(socketIOClient(WS_SRV))
 
   // useEffect(() => {
   //   if (chatId || userId) {
@@ -17,30 +17,21 @@ const Messages = ({ userId, chatId }) => {
   //   }
   // }, [chatId, userId])
 
-  useEffect(() => {
-    if (userId || chatId) {
-      socket.emit('chatId', chatId)
-      socket.on('chatId', (data) => {
-        setMessages(data)
-      })
-    }
-  }, [userId, chatId])
+  // useEffect(() => {
+  //   if (userId || chatId) {
+  //     socket.emit('chatId', chatId)
+  //     socket.on('chatId', (data) => {
+  //       setMessages(data)
+  //     })
+  //   }
+  // }, [userId, chatId])
 
   return (
     <>
-      <div>
-        {messages.map((message) => {
-          return (
-            <article
-              key={message._id}
-              received={message.user === userId ? 1 : 0}
-            >
-              <p>{message.content}</p>
-              <span>{message.date}</span>
-            </article>
-          )
-        })}
-      </div>
+      <article received={received}>
+        <p>{content}</p>
+        <span>{date}</span>
+      </article>
       <style jsx>{styles}</style>
     </>
   )
