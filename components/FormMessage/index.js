@@ -34,6 +34,7 @@ const FormMessage = ({ handleSubmit }) => {
         onSubmit={(e) => {
           e.preventDefault()
           handleSubmit(messageField)
+          setMessageField('')
         }}
       >
         <input

@@ -15,24 +15,32 @@ const ChatMessages = () => {
   const router = useRouter()
 
   useEffect(() => {
-    setUserId(router.query.userId)
-    setChatId(router.query.chatId)
+    const userId = router.query.userId
+    const chatId = router.query.chatId
+    setUserId(userId)
+    setChatId(chatId)
+    socket.emit('chatId', chatId)
+    socket.on('chatId', (data) => {
+      setMessages(data)
+    })
+    socket.on('newMessage', (data) => {
+      setMessages([...messages, data])
+    })
   }, [router])
 
-  useEffect(() => {
-    if (userId || chatId) {
-      socket.emit('chatId', chatId)
-      socket.on('chatId', (data) => {
-        setMessages(data)
-      })
-    }
-  }, [userId, chatId])
+  // useEffect(() => {
+  //   if (userId || chatId) {
+  //   }
+  // }, [userId, chatId])
 
   const handleSubmit = (messageField) => {
     socket.emit('sendMessage', {
       user: userId,
       content: messageField,
       chat: chatId
+    })
+    socket.on('newMessage', (data) => {
+      setMessages([...messages, data])
     })
   }
   return (
