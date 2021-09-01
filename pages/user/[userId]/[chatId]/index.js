@@ -23,8 +23,8 @@ const ChatMessages = () => {
     socket.on('chatId', (data) => {
       setMessages(data)
     })
-    socket.on('newMessage', (data) => {
-      setMessages([...messages, data])
+    socket.on('addedMessage', (data) => {
+      setMessages(data)
     })
   }, [router])
 
@@ -38,9 +38,6 @@ const ChatMessages = () => {
       user: userId,
       content: messageField,
       chat: chatId
-    })
-    socket.on('newMessage', (data) => {
-      setMessages([...messages, data])
     })
   }
   return (
