@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
+import { useEffect, useState, useRef } from 'react'
 import Layout from '../../../../components/Layout'
 import Messages from '../../../../components/Messages'
 import FormMessage from '../../../../components/FormMessage'
@@ -7,45 +6,52 @@ import { colors, boxShadow } from '../../../../styles/theme'
 import socketIOClient from 'socket.io-client'
 import { API, LOCAL_SRV, WS_SRV } from '../../../../config'
 
-const ChatMessages = () => {
-  const [userId, setUserId] = useState('')
-  const [chatId, setChatId] = useState('')
+const ChatMessages = ({ user, chat }) => {
   const [messages, setMessages] = useState([])
-  const [socket, setSocket] = useState(socketIOClient(WS_SRV))
-  const router = useRouter()
+  const chatElement = useRef(null)
+  const socket = socketIOClient(WS_SRV)
 
   useEffect(() => {
-    const userId = router.query.userId
-    const chatId = router.query.chatId
-    setUserId(userId)
-    setChatId(chatId)
-    socket.emit('chatId', chatId)
+    console.log({
+      user: user,
+      chat: chat
+    })
+    socket.emit('chatId', chat)
     socket.on('chatId', (data) => {
+      // console.log(data)
       setMessages(data)
     })
-    socket.on('addedMessage', (data) => {
-      setMessages(data)
-    })
-  }, [router])
+  }, [])
 
   // useEffect(() => {
   //   if (userId || chatId) {
+  //     console.log('a')
+  //     socket.on('addedMessage', (data) => {
+  //       setMessages(data)
+  //     })
   //   }
-  // }, [userId, chatId])
+  // }, [chatId, userId])
+
+  // useEffect(() => {
+  //   if (messages.length > 0) {
+  //     chatElement.current.scroll(0, chatElement.current.scrollHeight)
+  //   }
+  // }, [messages])
 
   const handleSubmit = (messageField) => {
-    socket.emit('sendMessage', {
-      user: userId,
-      content: messageField,
-      chat: chatId
-    })
+    // socket.emit('sendMessage', {
+    //   user: userId,
+    //   content: messageField,
+    //   chat: chatId
+    // })
   }
+
   return (
     <>
       <Layout>
-        <ul>
+        <ul ref={chatElement}>
           {messages.map((message) => {
-            const received = message.user === userId ? 1 : 0
+            const received = message.user === user ? 1 : 0
             return (
               <li key={message._id}>
                 <Messages
@@ -62,7 +68,7 @@ const ChatMessages = () => {
       </Layout>
       <style jsx>{`
         ul {
-          overflow-y: auto;
+          overflow-y: scroll;
           min-height: 150px;
           height: 73%;
           box-shadow: ${boxShadow};
@@ -98,6 +104,17 @@ const ChatMessages = () => {
       `}</style>
     </>
   )
+}
+
+export const getServerSideProps = (ctx) => {
+  const { params } = ctx
+  const { userId, chatId } = params
+  return {
+    props: {
+      user: userId,
+      chat: chatId
+    }
+  }
 }
 
 export default ChatMessages
