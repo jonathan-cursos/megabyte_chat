@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Chats from '../../../components/Chats'
 import Layout from '../../../components/Layout'
 import { colors, boxShadow } from '../../../styles/theme'
-import { LOCAL_SRV } from '../../../config'
+import { API } from '../../../config'
 
 const Chat = ({ chats, userId }) => {
   return (
@@ -67,7 +67,7 @@ const Chat = ({ chats, userId }) => {
 
 Chat.getInitialProps = (ctx) => {
   const userId = ctx.query.userId
-  return fetch(`${LOCAL_SRV}/chat/${userId}`)
+  return fetch(`${API}/chat/${userId}`)
     .then((res) => res.json())
     .then(({ body: chats }) => {
       return { chats, userId }

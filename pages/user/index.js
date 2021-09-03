@@ -2,7 +2,7 @@ import Head from 'next/head'
 import Layout from '../../components/Layout'
 import Users from '../../components/Users'
 import { colors, boxShadow } from '../../styles/theme'
-import { LOCAL_SRV } from '../../config'
+import { API } from '../../config'
 
 const User = ({ users }) => {
   return (
@@ -48,7 +48,7 @@ const User = ({ users }) => {
 }
 
 User.getInitialProps = () => {
-  return fetch(`${LOCAL_SRV}/user`)
+  return fetch(`${API}/user`)
     .then((res) => res.json())
     .then(({ body }) => {
       return { users: body }

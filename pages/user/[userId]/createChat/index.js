@@ -8,7 +8,7 @@ const createChat = ({ users }) => {
 
   useEffect(async () => {
     const chatsRes = await fetch(
-      `${LOCAL_SRV}/chat/${router.query.userId}?populate=pop`
+      `${API}/chat/${router.query.userId}?populate=pop`
     )
     const { body: chats } = await chatsRes.json()
     const usersWithChat = chats
@@ -22,7 +22,7 @@ const createChat = ({ users }) => {
   }, [router, users])
 
   const handleCreateChat = async (event) => {
-    await fetch(`${LOCAL_SRV}/chat`, {
+    await fetch(`${API}/chat`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -66,7 +66,7 @@ const createChat = ({ users }) => {
 }
 
 createChat.getInitialProps = (ctx) => {
-  return fetch(`${LOCAL_SRV}/user/`)
+  return fetch(`${API}/user/`)
     .then((res) => res.json())
     .then(({ body: users }) => {
       return { users }
