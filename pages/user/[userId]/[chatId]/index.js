@@ -3,47 +3,45 @@ import Layout from '../../../../components/Layout'
 import Messages from '../../../../components/Messages'
 import FormMessage from '../../../../components/FormMessage'
 import { colors, boxShadow } from '../../../../styles/theme'
-import socketIOClient from 'socket.io-client'
+import io from 'socket.io-client'
 import { API, LOCAL_SRV, WS_SRV } from '../../../../config'
 
 const ChatMessages = ({ user, chat }) => {
   const [messages, setMessages] = useState([])
   const chatElement = useRef(null)
-  const socket = socketIOClient(WS_SRV)
+  const [socket, setSocket] = useState(null)
 
   useEffect(() => {
-    console.log({
-      user: user,
-      chat: chat
-    })
-    socket.emit('chatId', chat)
-    socket.on('chatId', (data) => {
-      // console.log(data)
-      setMessages(data)
-    })
-  }, [])
+    const newSocket = io(WS_SRV)
+    setSocket(newSocket)
+    return () => newSocket.close()
+  }, [setSocket])
 
-  // useEffect(() => {
-  //   if (userId || chatId) {
-  //     console.log('a')
-  //     socket.on('addedMessage', (data) => {
-  //       setMessages(data)
-  //     })
-  //   }
-  // }, [chatId, userId])
-
-  // useEffect(() => {
-  //   if (messages.length > 0) {
-  //     chatElement.current.scroll(0, chatElement.current.scrollHeight)
-  //   }
-  // }, [messages])
+  useEffect(() => {
+    if (socket) {
+      socket.emit('chatId', chat)
+      socket.on('chatId', (data) => {
+        // console.log(data)
+        setMessages(data)
+        chatElement.current.scroll(0, chatElement.current.scrollHeight)
+      })
+      socket.on('addedMessage', (data) => {
+        setMessages(data)
+        chatElement.current.scroll(0, chatElement.current.scrollHeight)
+      })
+    }
+  }, [socket])
 
   const handleSubmit = (messageField) => {
-    // socket.emit('sendMessage', {
-    //   user: userId,
-    //   content: messageField,
-    //   chat: chatId
-    // })
+    socket.emit('sendMessage', {
+      user: user,
+      content: messageField,
+      chat: chat
+    })
+    socket.on('addedMessage', (data) => {
+      setMessages(data)
+      chatElement.current.scroll(0, chatElement.current.scrollHeight)
+    })
   }
 
   return (
