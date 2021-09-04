@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import { API } from '../../../../config'
+import { colors, boxShadow } from '../../../../styles/theme'
 import Head from 'next/head'
 
 const createChat = ({ users }) => {
@@ -60,7 +61,27 @@ const createChat = ({ users }) => {
       <style jsx>{`
         button {
           display: block;
-          margin: 10px 0;
+          background: white;
+          font-size: 2rem;
+          color: ${colors.secondary};
+          margin-top: 5px;
+          text-decoration: none;
+        }
+
+        p {
+          color: ${colors.primary};
+          font-size: 1.4rem;
+          text-align: center;
+        }
+
+        ul {
+          width: 100%;
+          height: 450px;
+          padding: 20px;
+          margin-top: 20px;
+          box-shadow: ${boxShadow};
+          overflow-y: auto;
+          border-radius: 20px;
         }
       `}</style>
     </>

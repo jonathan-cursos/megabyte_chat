@@ -51,7 +51,7 @@ export default css`
   }
 
   h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     letter-spacing: 1rem;
     font-weight: 600;
     text-align: center;
@@ -61,13 +61,21 @@ export default css`
     height: 100%;
     /* max-height: 300px; */
     width: 100%;
-    padding: 60px 25px 10px;
+    padding: 25px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   @media (min-width: 500px) {
+    h1 {
+      font-size: 3.5rem;
+    }
+
     div {
-      height: 100%;
       max-height: 800px;
+      height: 100%;
+      height: 800px;
       width: 500px;
       position: relative;
     }

@@ -23,7 +23,7 @@ const User = ({ users }) => {
       <style jsx>{`
         p {
           color: ${colors.primary};
-          font-size: 2rem;
+          font-size: 1.4rem;
           text-align: center;
         }
 

@@ -39,7 +39,8 @@ const Chat = ({ chats, userId }) => {
       <style jsx>{`
         p {
           color: ${colors.primary};
-          font-size: 1.6rem;
+          font-size: 1.4rem;
+          text-align: center;
         }
 
         ul {
