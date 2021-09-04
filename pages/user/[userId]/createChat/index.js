@@ -75,13 +75,11 @@ const createChat = ({ users }) => {
         }
 
         ul {
-          width: 100%;
-          height: 450px;
-          padding: 20px;
-          margin-top: 20px;
+          overflow-y: scroll;
+          min-height: 200px;
+          max-height: 400px;
           box-shadow: ${boxShadow};
-          overflow-y: auto;
-          border-radius: 20px;
+          padding: 15px;
         }
       `}</style>
     </>

@@ -4,15 +4,11 @@ import { colors, boxShadow, fontFamily } from '../../styles/theme'
 export default css`
   div {
     min-height: 45px;
-    /* position: absolute; */
     margin-top: 15px;
     bottom: 10px;
     width: 100%;
   }
   form {
-    /* display: flex;
-    justify-content: space-between;
-    align-items: center; */
     border-radius: 20px;
     box-shadow: ${boxShadow};
     position: relative;

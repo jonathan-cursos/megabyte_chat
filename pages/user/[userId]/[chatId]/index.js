@@ -71,7 +71,7 @@ const ChatMessages = ({ user, chat }) => {
           min-height: 200px;
           max-height: 400px;
           box-shadow: ${boxShadow};
-          padding: 5px;
+          padding: 15px;
         }
 
         li {
