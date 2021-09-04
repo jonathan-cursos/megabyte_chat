@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Layout from '../../components/Layout'
 import Users from '../../components/Users'
 import { colors, boxShadow } from '../../styles/theme'
 import { API } from '../../config'
@@ -46,11 +45,11 @@ const User = ({ users }) => {
   )
 }
 
-User.getInitialProps = () => {
+export const getServerSideProps = () => {
   return fetch(`${API}/user`)
     .then((res) => res.json())
     .then(({ body }) => {
-      return { users: body }
+      return { props: { users: body } }
     })
 }
 

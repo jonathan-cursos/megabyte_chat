@@ -65,12 +65,12 @@ const Chat = ({ chats, userId }) => {
   )
 }
 
-Chat.getInitialProps = (ctx) => {
-  const userId = ctx.query.userId
+export const getServerSideProps = (ctx) => {
+  const { userId } = ctx.query
   return fetch(`${API}/chat/${userId}`)
     .then((res) => res.json())
     .then(({ body: chats }) => {
-      return { chats, userId }
+      return { props: { chats, userId } }
     })
 }
 

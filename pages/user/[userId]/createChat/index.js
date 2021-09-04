@@ -63,11 +63,11 @@ const createChat = ({ users }) => {
   )
 }
 
-createChat.getInitialProps = (ctx) => {
+export const getServerSideProps = () => {
   return fetch(`${API}/user/`)
     .then((res) => res.json())
     .then(({ body: users }) => {
-      return { users }
+      return { props: { users } }
     })
 }
 
