@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Chats from '../../../components/Chats'
-import Layout from '../../../components/Layout'
 import { colors, boxShadow } from '../../../styles/theme'
 import { API } from '../../../config'
 

@@ -1,6 +1,6 @@
-import { useRouter } from 'next/router'
-import Layout from '../../../components/Layout'
 import useField from '../../../hooks/useField'
+import { useRouter } from 'next/router'
+import Head from 'next/head'
 import { API } from '../../../config'
 
 const CreateUser = () => {
@@ -34,6 +34,9 @@ const CreateUser = () => {
 
   return (
     <>
+      <Head>
+        <title>Megabyte Chat - Crear usuario</title>
+      </Head>
       <h2>Ingresa los datos del nuevo usuario</h2>
       <form onSubmit={handleSubmit}>
         <label>

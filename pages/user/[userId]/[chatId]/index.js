@@ -1,10 +1,10 @@
 import { useEffect, useState, useRef } from 'react'
-import Layout from '../../../../components/Layout'
+import Head from 'next/head'
+import io from 'socket.io-client'
 import Messages from '../../../../components/Messages'
 import FormMessage from '../../../../components/FormMessage'
 import { colors, boxShadow } from '../../../../styles/theme'
-import io from 'socket.io-client'
-import { API, LOCAL_SRV, WS_SRV } from '../../../../config'
+import { WS_SRV } from '../../../../config'
 
 const ChatMessages = ({ user, chat }) => {
   const [messages, setMessages] = useState([])
@@ -46,6 +46,9 @@ const ChatMessages = ({ user, chat }) => {
 
   return (
     <>
+      <Head>
+        <title>Megabyte Chat - Mensajes</title>
+      </Head>
       <ul ref={chatElement}>
         {messages.map((message) => {
           const received = message.user === user ? 1 : 0

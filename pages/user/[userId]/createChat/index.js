@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import Layout from '../../../../components/Layout'
-import { API, LOCAL_SRV } from '../../../../config'
+import { API } from '../../../../config'
+import Head from 'next/head'
+
 const createChat = ({ users }) => {
   const [validUsers, setValidUsers] = useState([])
   const router = useRouter()
@@ -36,6 +37,9 @@ const createChat = ({ users }) => {
 
   return (
     <>
+      <Head>
+        <title>Megabyte Chat - Nuevo chat</title>
+      </Head>
       <div>
         <p>Indica el usuario con el que iniciaras un chat</p>
         <ul>

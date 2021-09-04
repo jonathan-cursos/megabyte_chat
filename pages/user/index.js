@@ -7,7 +7,7 @@ const User = ({ users }) => {
   return (
     <>
       <Head>
-        <title>Megabyte Chat - Users</title>
+        <title>Megabyte Chat - Ingresar</title>
       </Head>
       <p>Escoge el usuario con el que quieres ingresar</p>
       <ul>

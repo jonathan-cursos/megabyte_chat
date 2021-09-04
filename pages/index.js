@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Megabyte Chat - Menu</title>
+        <title>Megabyte Chat - Menú</title>
       </Head>
       <div>
         <button
