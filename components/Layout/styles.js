@@ -20,6 +20,7 @@ export const globals = css.global`
   main {
     width: 100vw;
     height: 100vh;
+    min-height: 360px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,6 +43,26 @@ export const globals = css.global`
     border: none;
     font-family: ${fontFamily};
   }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Track */ /*Fondo del scroll*/
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #d4d4d4;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${colors.secondary};
+  }
 `
 
 export default css`
@@ -57,9 +78,8 @@ export default css`
     text-align: center;
   }
   div {
-    background-color: white;
+    background-color: ${colors.white};
     height: 100%;
-    /* max-height: 300px; */
     width: 100%;
     padding: 25px 20px;
     display: flex;
@@ -73,9 +93,7 @@ export default css`
     }
 
     div {
-      max-height: 800px;
-      height: 100%;
-      height: 800px;
+      max-height: 650px;
       width: 500px;
       position: relative;
     }

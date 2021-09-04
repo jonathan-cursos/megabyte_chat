@@ -68,8 +68,8 @@ const ChatMessages = ({ user, chat }) => {
       <style jsx>{`
         ul {
           overflow-y: scroll;
-          min-height: 150px;
-          height: 73%;
+          min-height: 200px;
+          max-height: 400px;
           box-shadow: ${boxShadow};
           padding: 5px;
         }
@@ -79,26 +79,6 @@ const ChatMessages = ({ user, chat }) => {
           display: flex;
           flex-direction: column;
           align-items: flex-end;
-        }
-
-        /* width */
-        ::-webkit-scrollbar {
-          width: 5px;
-        }
-
-        /* Track */ /*Fondo del scroll*/
-        ::-webkit-scrollbar-track {
-          background: #f1f1f1;
-        }
-
-        /* Handle */
-        ::-webkit-scrollbar-thumb {
-          background: #d4d4d4;
-        }
-
-        /* Handle on hover */
-        ::-webkit-scrollbar-thumb:hover {
-          background: ${colors.secondary};
         }
       `}</style>
     </>

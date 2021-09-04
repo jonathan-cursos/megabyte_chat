@@ -3,10 +3,11 @@ import { colors, boxShadow, fontFamily } from '../../styles/theme'
 
 export default css`
   div {
-    height: 45px;
-    position: absolute;
+    min-height: 45px;
+    /* position: absolute; */
+    margin-top: 15px;
     bottom: 10px;
-    width: calc(100% - 50px);
+    width: 100%;
   }
   form {
     /* display: flex;
@@ -38,7 +39,7 @@ export default css`
     border: none;
     color: white;
     position: absolute;
-    right: 0;
+    right: -3px;
     display: flex;
     justify-content: center;
     align-items: center;
