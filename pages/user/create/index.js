@@ -33,7 +33,7 @@ const CreateUser = () => {
   }
 
   return (
-    <Layout>
+    <>
       <h2>Ingresa los datos del nuevo usuario</h2>
       <form onSubmit={handleSubmit}>
         <label>
@@ -65,7 +65,7 @@ const CreateUser = () => {
           font-size: 2rem;
         }
       `}</style>
-    </Layout>
+    </>
   )
 }
 

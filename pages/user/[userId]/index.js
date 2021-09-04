@@ -11,7 +11,7 @@ const Chat = ({ chats, userId }) => {
       <Head>
         <title>Megabyte Chat - Chats</title>
       </Head>
-      <Layout>
+      <div>
         <p>Escoge el chat al que deseas ingresar</p>
         <ul>
           {chats.map((chat) => {
@@ -36,7 +36,7 @@ const Chat = ({ chats, userId }) => {
         <Link href={`/user/${userId}/createChat`}>
           <a>Crear un nuevo chat</a>
         </Link>
-      </Layout>
+      </div>
       <style jsx>{`
         p {
           color: ${colors.primary};

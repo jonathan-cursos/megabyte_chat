@@ -36,25 +36,23 @@ const createChat = ({ users }) => {
 
   return (
     <>
-      <Layout>
-        <div>
-          <p>Indica el usuario con el que iniciaras un chat</p>
-          <ul>
-            {validUsers.map((user) => {
-              return (
-                <button
-                  type='button'
-                  key={user._id}
-                  id={user._id}
-                  onClick={handleCreateChat}
-                >
-                  {user.name}
-                </button>
-              )
-            })}
-          </ul>
-        </div>
-      </Layout>
+      <div>
+        <p>Indica el usuario con el que iniciaras un chat</p>
+        <ul>
+          {validUsers.map((user) => {
+            return (
+              <button
+                type='button'
+                key={user._id}
+                id={user._id}
+                onClick={handleCreateChat}
+              >
+                {user.name}
+              </button>
+            )
+          })}
+        </ul>
+      </div>
       <style jsx>{`
         button {
           display: block;

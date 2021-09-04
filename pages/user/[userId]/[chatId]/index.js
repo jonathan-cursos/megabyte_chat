@@ -46,24 +46,22 @@ const ChatMessages = ({ user, chat }) => {
 
   return (
     <>
-      <Layout>
-        <ul ref={chatElement}>
-          {messages.map((message) => {
-            const received = message.user === user ? 1 : 0
-            return (
-              <li key={message._id}>
-                <Messages
-                  content={message.content}
-                  date={message.date}
-                  id={message._id}
-                  received={received}
-                />
-              </li>
-            )
-          })}
-        </ul>
-        <FormMessage handleSubmit={handleSubmit} />
-      </Layout>
+      <ul ref={chatElement}>
+        {messages.map((message) => {
+          const received = message.user === user ? 1 : 0
+          return (
+            <li key={message._id}>
+              <Messages
+                content={message.content}
+                date={message.date}
+                id={message._id}
+                received={received}
+              />
+            </li>
+          )
+        })}
+      </ul>
+      <FormMessage handleSubmit={handleSubmit} />
       <style jsx>{`
         ul {
           overflow-y: scroll;

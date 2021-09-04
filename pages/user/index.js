@@ -7,21 +7,20 @@ import { API } from '../../config'
 const User = ({ users }) => {
   return (
     <>
-      <Layout>
-        <Head>
-          <title>Megabyte Chat - Users</title>
-        </Head>
-        <p>Escoge el usuario con el que quieres ingresar</p>
-        <ul>
-          {users.map((user) => {
-            return (
-              <li key={user._id}>
-                <Users name={user.name} key={user.id} id={user._id} />
-              </li>
-            )
-          })}
-        </ul>
-      </Layout>
+      <Head>
+        <title>Megabyte Chat - Users</title>
+      </Head>
+      <p>Escoge el usuario con el que quieres ingresar</p>
+      <ul>
+        {users.map((user) => {
+          return (
+            <li key={user._id}>
+              <Users name={user.name} key={user.id} id={user._id} />
+            </li>
+          )
+        })}
+      </ul>
+
       <style jsx>{`
         p {
           color: ${colors.primary};
