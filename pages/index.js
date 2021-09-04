@@ -1,4 +1,3 @@
-import Layout from '../components/Layout'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { colors } from '../styles/theme'
