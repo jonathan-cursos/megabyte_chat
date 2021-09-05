@@ -1,40 +1,17 @@
-import { useEffect, useState } from 'react'
-import { useRouter } from 'next/router'
-import { API } from '../../../../config'
 import { colors, boxShadow } from '../../../../styles/theme'
 import Head from 'next/head'
+import { API } from '../../../../config'
+import NewChatButton from '../../../../components/NewChatButton'
+import validateUsers from '../../../../utils/validateUser'
+import { useEffect, useState } from 'react'
 
-const createChat = ({ users }) => {
+const createChat = ({ users, chatCreator }) => {
   const [validUsers, setValidUsers] = useState([])
-  const router = useRouter()
 
   useEffect(async () => {
-    const chatsRes = await fetch(
-      `${API}/chat/${router.query.userId}?populate=pop`
-    )
-    const { body: chats } = await chatsRes.json()
-    const usersWithChat = chats
-      .map((chat) => {
-        return chat.users.map((user) => user)
-      })
-      .flat()
-
-    const newUsers = users.filter((user) => !usersWithChat.includes(user._id))
-    setValidUsers(newUsers)
-  }, [router, users])
-
-  const handleCreateChat = async (event) => {
-    await fetch(`${API}/chat`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        users: [router.query.userId, event.target.id]
-      })
-    })
-    router.push(`/user/${router.query.userId}`)
-  }
+    const usersValidated = await validateUsers(users, chatCreator)
+    setValidUsers(usersValidated)
+  }, [])
 
   return (
     <>
@@ -46,28 +23,18 @@ const createChat = ({ users }) => {
         <ul>
           {validUsers.map((user) => {
             return (
-              <button
-                type='button'
-                key={user._id}
-                id={user._id}
-                onClick={handleCreateChat}
-              >
-                {user.name}
-              </button>
+              <li key={user._id}>
+                <NewChatButton
+                  user={user._id}
+                  name={user.name}
+                  chatCreator={chatCreator}
+                />
+              </li>
             )
           })}
         </ul>
       </div>
       <style jsx>{`
-        button {
-          display: block;
-          background: white;
-          font-size: 2rem;
-          color: ${colors.secondary};
-          margin-top: 5px;
-          text-decoration: none;
-        }
-
         p {
           color: ${colors.primary};
           font-size: 1.4rem;
@@ -86,11 +53,13 @@ const createChat = ({ users }) => {
   )
 }
 
-export const getServerSideProps = () => {
+export const getServerSideProps = (ctx) => {
+  const { params } = ctx
+  const { userId: chatCreator } = params
   return fetch(`${API}/user/`)
     .then((res) => res.json())
     .then(({ body: users }) => {
-      return { props: { users } }
+      return { props: { users, chatCreator } }
     })
 }
 
