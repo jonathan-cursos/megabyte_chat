@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Users from '../../components/Users'
 import { colors, boxShadow } from '../../styles/theme'
 import { API } from '../../config'
+import Spinner from '../../components/Spinner'
 
 const User = ({ users }) => {
   return (
@@ -19,7 +20,7 @@ const User = ({ users }) => {
           )
         })}
       </ul>
-
+      <Spinner />
       <style jsx>{`
         p {
           color: ${colors.primary};

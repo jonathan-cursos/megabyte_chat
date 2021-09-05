@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { colors } from '../styles/theme'
+import { API, WS_SRV } from '../config'
 
 export default function Home() {
   const router = useRouter()
@@ -50,4 +51,13 @@ export default function Home() {
       `}</style>
     </>
   )
+}
+
+export const getServerSideProps = async () => {
+  //Trick to init app when home is load
+  await fetch(`${API}`)
+  await fetch(`${WS_SRV}`)
+  return {
+    props: {}
+  }
 }

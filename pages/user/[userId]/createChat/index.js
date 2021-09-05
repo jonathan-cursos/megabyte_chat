@@ -1,9 +1,9 @@
-import { colors, boxShadow } from '../../../../styles/theme'
+import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { API } from '../../../../config'
+import { colors, boxShadow } from '../../../../styles/theme'
 import NewChatButton from '../../../../components/NewChatButton'
 import validateUsers from '../../../../utils/validateUser'
-import { useEffect, useState } from 'react'
 
 const createChat = ({ users, chatCreator }) => {
   const [validUsers, setValidUsers] = useState([])
