@@ -2,6 +2,20 @@ import css from 'styled-jsx/css'
 import { colors, boxShadow } from '../../styles/theme'
 
 export default css`
+  ul {
+    overflow-y: scroll;
+    min-height: 200px;
+    max-height: 400px;
+    box-shadow: ${boxShadow};
+    padding: 15px;
+  }
+
+  li {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
   article {
     color: white;
     background-color: ${colors.secondary};

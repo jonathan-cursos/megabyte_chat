@@ -4,29 +4,20 @@ import styles from './styles'
 import { LOCAL_SRV, WS_SRV } from '../../config'
 import socketIOClient from 'socket.io-client'
 
-const FormMessage = ({ handleSubmit }) => {
+const FormMessage = ({ socket, chat, user }) => {
   const [messageField, setMessageField] = useState('')
-  const [socket, setSocket] = useState(socketIOClient(WS_SRV))
 
   const handleChange = (event) => {
     setMessageField(event.target.value)
   }
 
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault()
-  //   await fetch(`${LOCAL_SRV}/message/`, {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify({
-  //       user: userId,
-  //       content: messageField,
-  //       chat: chatId
-  //     })
-  //   })
-  //   setMessageField('')
-  // }
+  const handleSubmit = (messageField) => {
+    socket.emit('sendMessage', {
+      user: user,
+      content: messageField,
+      chat: chat
+    })
+  }
 
   return (
     <div>

@@ -1,37 +1,40 @@
-import { useEffect, useState } from 'react'
-import socketIOClient from 'socket.io-client'
+import { useEffect, useState, useRef } from 'react'
 import styles from './styles'
-import { API, LOCAL_SRV, WS_SRV } from '../../config'
 
-const Messages = ({ content, date, id, received }) => {
-  // const [messages, setMessages] = useState([])
-  // const [socket, setSocket] = useState(socketIOClient(WS_SRV))
+const Messages = ({ socket, user, chat }) => {
+  const [messages, setMessages] = useState([])
+  const chatElement = useRef(null)
 
-  // useEffect(() => {
-  //   if (chatId || userId) {
-  //     fetch(`${LOCAL_SRV}/message/${chatId}`)
-  //       .then((res) => res.json())
-  //       .then(({ body: chatMessages }) => {
-  //         setMessages(chatMessages)
-  //       })
-  //   }
-  // }, [chatId, userId])
-
-  // useEffect(() => {
-  //   if (userId || chatId) {
-  //     socket.emit('chatId', chatId)
-  //     socket.on('chatId', (data) => {
-  //       setMessages(data)
-  //     })
-  //   }
-  // }, [userId, chatId])
+  useEffect(() => {
+    if (socket) {
+      socket.emit('chatId', chat)
+      socket.on('chatId', (data) => {
+        // console.log(data)
+        setMessages(data)
+        chatElement.current.scroll(0, chatElement.current.scrollHeight)
+      })
+      socket.on('addedMessage', (data) => {
+        setMessages(data)
+        chatElement.current.scroll(0, chatElement.current.scrollHeight)
+      })
+    }
+  }, [socket])
 
   return (
     <>
-      <article received={received}>
-        <p>{content}</p>
-        <span>{date}</span>
-      </article>
+      <ul ref={chatElement}>
+        {messages.map((message) => {
+          const received = message.user === user ? 1 : 0
+          return (
+            <li key={message._id}>
+              <article received={received}>
+                <p>{message.content}</p>
+                <span>{message.date}</span>
+              </article>
+            </li>
+          )
+        })}
+      </ul>
       <style jsx>{styles}</style>
     </>
   )
