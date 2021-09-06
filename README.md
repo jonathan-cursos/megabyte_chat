@@ -5,8 +5,12 @@ real.
 
 ## Backend
 
-Para ver el código usado en el backend, ve a este
-[repositorio](https://github.com/jonathan-cursos/megabyte_chat 'repositorio').
+Para el backend, cree un servidor de Web Sockets, y aparte, una API REST para lo
+que no requiera comunicación en tiempo real, los repositorios de estos puedes
+verlos aquí:
+
+- [Web Sockets](https://github.com/jonathangg03/megabyte-chat-sockets-server 'Web Sockets').
+- [API REST](https://github.com/jonathangg03/megabyte_chat_backend 'API REST').
 
 ## Instrucciones de uso
 
