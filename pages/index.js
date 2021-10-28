@@ -52,12 +52,3 @@ export default function Home() {
     </>
   )
 }
-
-export const getServerSideProps = async () => {
-  //Trick to init app when home is load
-  await fetch(`${API}`)
-  await fetch(`${WS_SRV}`)
-  return {
-    props: {}
-  }
-}
