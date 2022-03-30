@@ -22,15 +22,17 @@ const createChat = ({ users, chatCreator }) => {
         <p>Indica el usuario con el que iniciaras un chat</p>
         <ul>
           {validUsers.map((user) => {
-            return (
-              <li key={user._id}>
-                <NewChatButton
-                  user={user._id}
-                  name={user.name}
-                  chatCreator={chatCreator}
-                />
-              </li>
-            )
+            if (user._id !== chatCreator) {
+              return (
+                <li key={user._id}>
+                  <NewChatButton
+                    user={user._id}
+                    name={user.name}
+                    chatCreator={chatCreator}
+                  />
+                </li>
+              )
+            }
           })}
         </ul>
       </div>
