@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { API } from '../../../../config'
-import { colors, boxShadow } from '../../../../styles/theme'
+import { colors } from '../../../../styles/theme'
 import NewChatButton from '../../../../components/NewChatButton'
 import validateUsers from '../../../../utils/validateUser'
 
@@ -54,14 +54,12 @@ const createChat = ({ users, chatCreator }) => {
   )
 }
 
-export const getServerSideProps = (ctx) => {
+export const getServerSideProps = async (ctx) => {
   const { params } = ctx
   const { userId: chatCreator } = params
-  return fetch(`${API}/user/`)
-    .then((res) => res.json())
-    .then(({ body: users }) => {
-      return { props: { users, chatCreator } }
-    })
+  const res = await fetch(`${API}/user/`)
+  const { body: users } = await res.json()
+  return { props: { users, chatCreator } }
 }
 
 export default createChat

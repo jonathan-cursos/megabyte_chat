@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import Chats from '../../../components/Chats'
-import { colors, boxShadow } from '../../../styles/theme'
+import { colors } from '../../../styles/theme'
 import { API } from '../../../config'
 
 const Chat = ({ chats, userId }) => {

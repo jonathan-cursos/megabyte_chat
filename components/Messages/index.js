@@ -9,7 +9,6 @@ const Messages = ({ socket, user, chat }) => {
     if (socket) {
       socket.emit('chatId', chat)
       socket.on('chatId', (data) => {
-        // console.log(data)
         setMessages(data)
         chatElement.current.scroll(0, chatElement.current.scrollHeight)
       })

@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { MdSend } from 'react-icons/md'
 import styles from './styles'
-import { LOCAL_SRV, WS_SRV } from '../../config'
-import socketIOClient from 'socket.io-client'
 
 const FormMessage = ({ socket, chat, user }) => {
   const [messageField, setMessageField] = useState('')
