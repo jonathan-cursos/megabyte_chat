@@ -44,8 +44,7 @@ const createChat = ({ users, chatCreator }) => {
         ul {
           overflow-y: scroll;
           min-height: 200px;
-          max-height: 400px;
-          box-shadow: ${boxShadow};
+          max-height: 500px;
           padding: 15px;
         }
       `}</style>

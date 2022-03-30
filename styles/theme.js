@@ -4,6 +4,6 @@ export const colors = {
   white: '#fff'
 }
 
-export const boxShadow = 'rgba(149, 157, 165, 0.2) 0px 8px 24px'
+export const boxShadow = 'rgb(149 157 165 / 15%) 0px 8px 24px'
 
 export const fontFamily = '"Hind Siliguri", sans-serif'

@@ -47,8 +47,7 @@ const Chat = ({ chats, userId }) => {
         ul {
           overflow-y: scroll;
           min-height: 200px;
-          max-height: 400px;
-          box-shadow: ${boxShadow};
+          max-height: 500px;
           padding: 15px;
         }
 
@@ -58,19 +57,18 @@ const Chat = ({ chats, userId }) => {
           margin-top: 5px;
           display: block;
           text-decoration: none;
+          padding-left: 15px;
         }
       `}</style>
     </>
   )
 }
 
-export const getServerSideProps = (ctx) => {
+export const getServerSideProps = async (ctx) => {
   const { userId } = ctx.query
-  return fetch(`${API}/chat/${userId}`)
-    .then((res) => res.json())
-    .then(({ body: chats }) => {
-      return { props: { chats, userId } }
-    })
+  const res = await fetch(`${API}/chat/${userId}`)
+  const { body: chats } = await res.json()
+  return { props: { chats, userId } }
 }
 
 export default Chat

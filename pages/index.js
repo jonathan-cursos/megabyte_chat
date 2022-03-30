@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { colors } from '../styles/theme'
-import { API, WS_SRV } from '../config'
 
 export default function Home() {
   const router = useRouter()
@@ -33,10 +32,9 @@ export default function Home() {
         button {
           display: block;
           margin: 20px auto;
-          width: 200px;
-          height: 55px;
+          width: 400px;
+          height: 45px;
           border: none;
-          border-radius: 250px;
           font-size: 2rem;
           color: ${colors.white};
           text-decoration: none;

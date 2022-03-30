@@ -4,6 +4,7 @@ export default css`
   input {
     width: 100%;
     padding: 5px;
+    border: 2px solid #8080803d;
   }
 
   p {

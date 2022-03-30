@@ -29,8 +29,7 @@ const User = ({ users }) => {
         ul {
           overflow-y: scroll;
           min-height: 200px;
-          max-height: 400px;
-          box-shadow: ${boxShadow};
+          max-height: 500px;
           padding: 15px;
         }
 
@@ -42,12 +41,10 @@ const User = ({ users }) => {
   )
 }
 
-export const getServerSideProps = () => {
-  return fetch(`${API}/user`)
-    .then((res) => res.json())
-    .then(({ body }) => {
-      return { props: { users: body } }
-    })
+export const getServerSideProps = async () => {
+  const res = await fetch(`${API}/user`)
+  const { body } = await res.json()
+  return { props: { users: body } }
 }
 
 export default User

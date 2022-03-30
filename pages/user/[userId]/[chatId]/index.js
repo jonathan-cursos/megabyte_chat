@@ -11,6 +11,7 @@ const ChatMessages = ({ user, chat }) => {
   useEffect(() => {
     const newSocket = io(WS_SRV)
     setSocket(newSocket)
+
     return () => newSocket.close()
   }, [setSocket])
 
