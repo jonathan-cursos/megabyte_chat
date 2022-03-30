@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Users from '../../components/Users'
-import { colors, boxShadow } from '../../styles/theme'
+import { colors } from '../../styles/theme'
 import { API } from '../../config'
 
 const User = ({ users }) => {
