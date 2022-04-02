@@ -41,12 +41,10 @@ const User = ({ users }) => {
   )
 }
 
-export const getServerSideProps = () => {
-  return fetch(`https://megabyte-chat-be.herokuapp.com/user`)
-    .then((res) => res.json())
-    .then((data) => {
-      return { props: { users: data.body } }
-    })
+export const getServerSideProps = async () => {
+  const res = await fetch(`${API}}/user`)
+  const { body } = await res.json()
+  return { props: { users: body } }
 }
 
 export default User
