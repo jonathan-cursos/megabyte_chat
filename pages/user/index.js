@@ -41,10 +41,13 @@ const User = ({ users }) => {
   )
 }
 
-export const getServerSideProps = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_BE_API}/user`)
-  const { body } = await res.json()
-  return { props: { users: body } }
+export const getServerSideProps = () => {
+  console.log(process.env.NEXT_PUBLIC_BE_API)
+  return fetch(`${process.env.NEXT_PUBLIC_BE_API}/user`)
+    .then((res) => res.json())
+    .then((data) => {
+      return { props: { users: data.body } }
+    })
 }
 
 export default User
