@@ -42,8 +42,7 @@ const User = ({ users }) => {
 }
 
 export const getServerSideProps = () => {
-  console.log(process.env.NEXT_PUBLIC_BE_API)
-  return fetch(`${process.env.NEXT_PUBLIC_BE_API}/user`)
+  return fetch(`${API}/user`)
     .then((res) => res.json())
     .then((data) => {
       return { props: { users: data.body } }
