@@ -42,7 +42,7 @@ const User = ({ users }) => {
 }
 
 export const getServerSideProps = () => {
-  return fetch(`${API}/user`)
+  return fetch(`https://megabyte-chat-be.herokuapp.com/user`)
     .then((res) => res.json())
     .then((data) => {
       return { props: { users: data.body } }
