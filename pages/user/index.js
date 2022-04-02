@@ -1,9 +1,18 @@
 import Head from 'next/head'
+import useSwr from 'swr'
 import Users from '../../components/Users'
 import { colors } from '../../styles/theme'
 import { API } from '../../config'
 
-const User = ({ users }) => {
+const fetcher = (...args) => fetch(...args).then((res) => res.json())
+
+const User = () => {
+  const { data: users, error } = useSwr(`${API}/user`, fetcher)
+
+  if (error) return <p>{error}</p>
+
+  if (!users) return <p>Loading....</p>
+
   return (
     <>
       <Head>
@@ -11,7 +20,7 @@ const User = ({ users }) => {
       </Head>
       <p>Escoge el usuario con el que quieres ingresar</p>
       <ul>
-        {users.map((user) => {
+        {users.body.map((user) => {
           return (
             <li key={user._id}>
               <Users name={user.name} key={user.id} id={user._id} />
@@ -41,10 +50,10 @@ const User = ({ users }) => {
   )
 }
 
-export const getServerSideProps = async () => {
-  const res = await fetch(`${API}}/user`)
-  const { body } = await res.json()
-  return { props: { users: body } }
-}
+// export const getServerSideProps = async () => {
+//   const res = await fetch(`${API}/user`)
+//   const { body } = await res.json()
+//   return { props: { users: body } }
+// }
 
 export default User
