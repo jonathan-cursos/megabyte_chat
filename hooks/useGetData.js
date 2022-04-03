@@ -2,9 +2,13 @@ import { API } from '../config'
 import useSwr from 'swr'
 
 const fetcher = async (args) => {
-  const res = await fetch(args)
-  const data = await res.json()
-  return data
+  try {
+    const res = await fetch(args)
+    const data = await res.json()
+    return data
+  } catch (error) {
+    console.log(error.message)
+  }
 }
 
 const useGetData = ({ userId } = {}) => {
