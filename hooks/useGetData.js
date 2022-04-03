@@ -25,11 +25,7 @@ const useGetData = ({ userId } = {}) => {
     endpoint = `${API}/chat/${userId}`
   }
 
-  console.log(endpoint)
   const { data, error } = useSwr(endpoint, fetcher)
-
-  console.log(data)
-  console.log(errorgi)
   return {
     data: data,
     isLoading: !error && !data,

@@ -29,7 +29,6 @@ const User = () => {
       </Head>
       <p>Escoge el usuario con el que quieres ingresar</p>
       <ul>
-        {console.log(users)}
         {users.body.map((user) => {
           return (
             <li key={user._id}>
