@@ -1,13 +1,18 @@
 import { API } from '../config'
 import useSwr from 'swr'
 
-const fetcher = async (...args) => {
-  try {
-    const res = await fetch(...args)
+const fetcher = async (args) => {
+  const res = await fetch(args)
+
+  if (!res.ok) {
+    //ERROR
+    const error = new Error('An error occurred while fetching the data.')
+    error.info = await res.json()
+    error.status = res.status
+    throw error
+  } else {
     const data = await res.json()
     return data
-  } catch (error) {
-    return error
   }
 }
 
