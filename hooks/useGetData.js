@@ -1,9 +1,9 @@
 import { API } from '../config'
 import useSwr from 'swr'
 
-const fetcher = async (args) => {
+const fetcher = async (...args) => {
   try {
-    const res = await fetch(args)
+    const res = await fetch(...args)
     const data = await res.json()
     return data
   } catch (error) {
@@ -20,8 +20,11 @@ const useGetData = ({ userId } = {}) => {
     endpoint = `${API}/chat/${userId}`
   }
 
+  console.log(endpoint)
   const { data, error } = useSwr(endpoint, fetcher)
 
+  console.log(data)
+  console.log(errorgi)
   return {
     data: data,
     isLoading: !error && !data,
