@@ -2,9 +2,30 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Chats from '../../../components/Chats'
 import { colors } from '../../../styles/theme'
-import { API } from '../../../config'
+import { useRouter } from 'next/router'
+import Loader from '../../../components/Loader'
+import useGetData from '../../../hooks/useGetData'
 
-const Chat = ({ chats, userId }) => {
+const Chat = () => {
+  const router = useRouter()
+  const { userId } = router.query
+  const { data: chats, isError, isLoading } = useGetData({ userId })
+
+  if (isError)
+    return (
+      <>
+        <p className='fetch_error'>Error: {error.message}</p>
+        <style jsx>{`
+          .fetch_error {
+            color: red;
+            font-size: 1.5rem;
+          }
+        `}</style>
+      </>
+    )
+
+  if (isLoading) return <Loader />
+
   return (
     <>
       <Head>
@@ -13,7 +34,7 @@ const Chat = ({ chats, userId }) => {
       <div>
         <p>Escoge el chat al que deseas ingresar</p>
         <ul>
-          {chats.map((chat) => {
+          {chats.body.map((chat) => {
             let userItem = {}
             chat.users.filter((user) => {
               if (user._id !== userId) {
@@ -62,13 +83,6 @@ const Chat = ({ chats, userId }) => {
       `}</style>
     </>
   )
-}
-
-export const getServerSideProps = async (ctx) => {
-  const { userId } = ctx.query
-  const res = await fetch(`${API}/chat/${userId}`)
-  const { body: chats } = await res.json()
-  return { props: { chats, userId } }
 }
 
 export default Chat
