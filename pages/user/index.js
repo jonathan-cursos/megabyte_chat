@@ -1,17 +1,26 @@
 import Head from 'next/head'
-import useSwr from 'swr'
 import Users from '../../components/Users'
 import { colors } from '../../styles/theme'
-import { API } from '../../config'
-
-const fetcher = (...args) => fetch(...args).then((res) => res.json())
+import Loader from '../../components/Loader'
+import useGetData from '../../hooks/useGetData'
 
 const User = () => {
-  const { data: users, error } = useSwr(`${API}/user`, fetcher)
+  const { data: users, isLoading, isError } = useGetData()
 
-  if (error) return <p>{error}</p>
+  if (isError)
+    return (
+      <>
+        <p className='fetch_error'>Error: {error.message}</p>
+        <style jsx>{`
+          .fetch_error {
+            color: red;
+            font-size: 1.5rem;
+          }
+        `}</style>
+      </>
+    )
 
-  if (!users) return <p>Loading....</p>
+  if (isLoading) return <Loader />
 
   return (
     <>
@@ -44,6 +53,11 @@ const User = () => {
 
         li {
           height: 40px;
+        }
+
+        .fetch_error {
+          color: red;
+          font-size: 1.6rem;
         }
       `}</style>
     </>
