@@ -10,7 +10,7 @@ const User = () => {
   if (isError)
     return (
       <>
-        <p className='fetch_error'>Error: {isError}</p>
+        <p className='fetch_error'>Error: {isError.info}</p>
         <style jsx>{`
           .fetch_error {
             color: red;
