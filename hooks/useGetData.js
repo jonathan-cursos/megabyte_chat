@@ -16,13 +16,13 @@ const fetcher = async (args) => {
   }
 }
 
-const useGetData = ({ userId } = {}) => {
+const useGetData = ({ userId = '' } = {}) => {
   let endpoint = ''
 
-  if (!userId) {
-    endpoint = `${API}/user`
-  } else {
+  if (userId) {
     endpoint = `${API}/chat/${userId}`
+  } else {
+    endpoint = `${API}/user`
   }
 
   const { data, error } = useSwr(endpoint, fetcher)
