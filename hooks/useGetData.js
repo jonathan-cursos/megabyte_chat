@@ -7,7 +7,7 @@ const fetcher = async (args) => {
     const data = await res.json()
     return data
   } catch (error) {
-    console.log(error.message)
+    return error
   }
 }
 

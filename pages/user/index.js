@@ -28,6 +28,7 @@ const User = () => {
         <title>Megabyte Chat - Ingresar</title>
       </Head>
       <p>Escoge el usuario con el que quieres ingresar</p>
+      {console.log(users)}
       <ul>
         {users.body.map((user) => {
           return (
