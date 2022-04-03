@@ -1,8 +1,8 @@
 import { API } from '../config'
 import useSwr from 'swr'
 
-const fetcher = async (args) => {
-  const res = await fetch(args)
+const fetcher = async (...args) => {
+  const res = await fetch(...args)
 
   if (!res.ok) {
     //ERROR
