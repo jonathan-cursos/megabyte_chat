@@ -70,7 +70,7 @@ const createChat = () => {
             }
           })}
         </ul>
-        {isError && <p className='fetch_error'>{isError}</p>}
+        {isError && <p className='fetch_error'>{isError.message}</p>}
       </div>
       <style jsx>{`
         p {
