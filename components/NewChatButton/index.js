@@ -1,26 +1,13 @@
-import { API } from '../../config'
-import { useRouter } from 'next/router'
 import styles from './styles'
 
-const NewChatButton = ({ user, chatCreator, name }) => {
-  const router = useRouter()
-
-  const handleCreateChat = async (event) => {
-    await fetch(`${API}/chat`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        users: [chatCreator, event.target.id]
-      })
-    })
-    router.push(`/user/${chatCreator}`)
-  }
-
+const NewChatButton = ({ user, chatCreator, name, handleCreateChat }) => {
   return (
     <>
-      <button type='button' id={user} onClick={handleCreateChat}>
+      <button
+        type='button'
+        id={user}
+        onClick={(event) => handleCreateChat(chatCreator, event.target.id)}
+      >
         {name}
       </button>
       <style jsx>{styles}</style>
