@@ -1,7 +1,10 @@
 # Megabyte Chat
 
 Un chat creado con Next.js, y usando Web Sockets para la comunicación en tiempo
-real.
+real. Puedes ver la aplicación
+[aquí](http://https://megabyte-chat.vercel.app/ 'aquí')
+
+[![Megabyte Chat](https://dav-dev.com/assets/projects/chat.jpg 'Megabyte Chat')](https://dav-dev.com/assets/projects/chat.jpg 'Megabyte Chat')
 
 ## Backend
 
@@ -38,3 +41,12 @@ verlos aquí:
 - Heroku.
 - Vercel.
 - MongoDB.
+
+## Correr aplicación en local
+
+- Debes clonar tanto este repositorio.
+- Abrir una terminal e ingresar a la carpeta creada.
+- Instalar las dependencias con el comando "npm install".
+- Iniciar el proyecto con el comando "npm run dev".
+- Debes tener corriendo en local en el puerto 3001 el backend, y en el 3002 el
+  servidor de web sockets. Revisa esos repositorios para más información.
