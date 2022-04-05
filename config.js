@@ -1,4 +1,2 @@
-export default {
-  API: process.env.BE_API,
-  WS_SRV: process.env.WS_SERVER
-}
+export const API = process.env.NEXT_PUBLIC_BE_API
+export const WS_SRV = process.env.NEXT_PUBLIC_WS_SERVER
