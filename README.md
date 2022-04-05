@@ -1,7 +1,7 @@
 # Megabyte Chat
 
 Un chat creado con Next.js, y usando Web Sockets para la comunicación en tiempo
-real. Puedes ver la aplicación [aquí](https://megabyte-chat.vercel.app/ 'aquí')
+real. Puedes ver la aplicación [aquí](https://megabyte-chat.vercel.app/ 'aquí').
 
 [![Megabyte Chat](https://dav-dev.com/assets/projects/chat.jpg 'Megabyte Chat')](https://dav-dev.com/assets/projects/chat.jpg 'Megabyte Chat')
 
@@ -43,7 +43,7 @@ socksets que mantenga abierta la comunicación. Puedes verlos aquí:
 
 ## Correr aplicación en local
 
-- Debes clonar tanto este repositorio.
+- Debes clonar este repositorio.
 - Abrir una terminal e ingresar a la carpeta creada.
 - Instalar las dependencias con el comando "npm install".
 - Iniciar el proyecto con el comando "npm run dev".
