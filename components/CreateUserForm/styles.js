@@ -19,4 +19,8 @@ export default css`
     display: block;
     font-size: 2rem;
   }
+
+  button[disabled] {
+    background-color: #00d4ff63;
+  }
 `
