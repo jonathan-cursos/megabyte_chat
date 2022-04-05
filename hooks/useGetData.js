@@ -28,7 +28,7 @@ const useGetData = ({ userId = '' } = {}) => {
   const { data, error } = useSwr(endpoint, fetcher)
 
   return {
-    data: data || [],
+    data: data,
     isLoading: !error && !data,
     isError: error
   }
