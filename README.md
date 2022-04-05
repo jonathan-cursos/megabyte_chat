@@ -1,16 +1,15 @@
 # Megabyte Chat
 
 Un chat creado con Next.js, y usando Web Sockets para la comunicación en tiempo
-real. Puedes ver la aplicación
-[aquí](http://https://megabyte-chat.vercel.app/ 'aquí')
+real. Puedes ver la aplicación [aquí](https://megabyte-chat.vercel.app/ 'aquí')
 
 [![Megabyte Chat](https://dav-dev.com/assets/projects/chat.jpg 'Megabyte Chat')](https://dav-dev.com/assets/projects/chat.jpg 'Megabyte Chat')
 
 ## Backend
 
-Para el backend, cree un servidor de Web Sockets, y aparte, una API REST para lo
-que no requiera comunicación en tiempo real, los repositorios de estos puedes
-verlos aquí:
+Para el backend, cree una API REST para el envio de datos al servidor como la
+creación y obtención de usuarios. Para los mensajes, cree un servidor de web
+socksets que mantenga abierta la comunicación. Puedes verlos aquí:
 
 - [Web Sockets](https://github.com/jonathangg03/megabyte-chat-sockets-server 'Web Sockets').
 - [API REST](https://github.com/jonathangg03/megabyte_chat_backend 'API REST').
