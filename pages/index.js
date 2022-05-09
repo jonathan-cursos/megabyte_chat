@@ -32,7 +32,7 @@ export default function Home() {
         button {
           display: block;
           margin: 20px auto;
-          width: 400px;
+          width: 100%;
           height: 45px;
           border: none;
           font-size: 2rem;
