@@ -3,7 +3,7 @@
 Un chat creado con Next.js, y usando Web Sockets para la comunicación en tiempo
 real. Puedes ver la aplicación [aquí](https://megabyte-chat.vercel.app/ 'aquí').
 
-[![Megabyte Chat](https://dav-dev.com/assets/projects/chat.jpg 'Megabyte Chat')](https://dav-dev.com/assets/projects/chat.jpg 'Megabyte Chat')
+[![Megabyte Chat](https://res.cloudinary.com/dklpyhteh/image/upload/v1661742489/Portfolio/chat_bwtm5f.jpg 'Megabyte Chat')](https://res.cloudinary.com/dklpyhteh/image/upload/v1661742489/Portfolio/chat_bwtm5f.jpg 'Megabyte Chat')
 
 ## Backend
 
