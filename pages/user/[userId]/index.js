@@ -14,7 +14,7 @@ const Chat = () => {
   if (isError)
     return (
       <>
-        <p className='fetch_error'>Error: {error.message}</p>
+        <p className='fetch_error'>Error: {isError.message}</p>
         <style jsx>{`
           .fetch_error {
             color: red;
